@@ -3,7 +3,7 @@
   <ul>
     <% @tasks.each do |task_key, task_hash| %>
     <li>
-      <%= link_to("#{task_hash[:name]}", "tasks/#{task_key}") %>
+      <%= link_to("#{task_hash[:title]}", "tasks/#{task_key}") %>
     </li>
     <% end %>
   </ul>
