@@ -1,0 +1,10 @@
+<main>
+  <%= content_tag(:h1) { "Tasks To Do" } %>
+  <ul>
+    <% @tasks.each do |task_key, task_hash| %>
+    <li>
+      <%= link_to("#{task_hash[:name]}", "tasks/#{task_key}") %>
+    </li>
+    <% end %>
+  </ul>
+</main>
