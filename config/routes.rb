@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'tasks#index'
   get 'tasks' => 'tasks#index'
-  get 'tasks/:identifier' => 'tasks#show'
+  get 'tasks/:id' => 'tasks#show', as: 'task'
   # get 'tasks/new' => 'tasks#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
