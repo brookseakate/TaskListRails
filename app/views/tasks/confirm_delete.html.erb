@@ -1,0 +1,6 @@
+<%= content_tag(:h3) { "Are you sure you want to delete this task?"} %>
+<%= content_tag(:h1) { "To do: " + @task.title } %>
+<%= content_tag(:h5) { "Status: #{@task.completion_status}" } %>
+<%= content_tag(:h4) { "Completion Date: #{@task.completed_at}" } %>
+<%= content_tag(:h3) { "Description: #{@task.description}" } %>
+<%= button_to "destroy", task_destroy_path(@task), method: :delete %>
