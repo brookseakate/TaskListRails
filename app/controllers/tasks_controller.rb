@@ -26,6 +26,7 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
+    @task_status_options = Task.status_options
   end #edit
 
   def update
