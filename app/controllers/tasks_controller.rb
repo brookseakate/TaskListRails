@@ -34,19 +34,13 @@ class TasksController < ApplicationController
     else
       render :edit
     end
-
   end #update
 
-  def confirm_delete
-    @task = Task.find(params[:id])
-  end
-
   def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
+    Task.find(params[:id]).destroy
 
     redirect_to tasks_path
-  end
+  end #destroy
 
   private
 

@@ -6,7 +6,7 @@
       <%= content_tag(:span) { t.title }%>
       <%= link_to("view", task_path(t)) %>
       <%= link_to("edit", task_edit_path(t)) %>
-      <%= link_to("delete", task_confirm_delete_path(t)) %>
+      <%= link_to("delete", task_path(t), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }) %>
     </li>
     <% end %>
   </ul>
