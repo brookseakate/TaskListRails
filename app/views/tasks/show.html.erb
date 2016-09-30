@@ -1,8 +1,9 @@
 <main>
   <article>
-    <%= content_tag(:h1) { "To do: " + @task[:title] } %>
-    <%= content_tag(:h5) { "Status: #{@task[:completion_status]}" } %>
-    <%= content_tag(:h4) { "Completion Date: #{@task[:completed_at]}" } %>
-    <%= content_tag(:h3) { "Description: #{@task[:description]}" } %>
+    <%= content_tag(:h1) { "To do: " + @task.title } %>
+    <%= content_tag(:h5) { "Status: #{@task.completion_status}" } %>
+    <%= content_tag(:h4) { "Completion Date: #{@task.completed_at}" } %>
+    <%= content_tag(:h3) { "Description: #{@task.description}" } %>
   </article>
+  <%= link_to "Edit this task", task_edit_path(@task) %>
 </main>

@@ -3,7 +3,10 @@
   <ul>
     <% @tasks.each do |t| %>
     <li>
-      <%= link_to("#{t[:title]}", task_path(t)) %>
+      <%= content_tag(:span) { t.title }%>
+      <%= link_to("view", task_path(t)) %>
+      <%= link_to("edit", task_edit_path(t)) %>
+      <%= link_to("delete", task_confirm_delete_path(t)) %>
     </li>
     <% end %>
   </ul>
