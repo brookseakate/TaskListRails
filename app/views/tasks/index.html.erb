@@ -3,6 +3,7 @@
   <ul>
     <% @tasks.each do |t| %>
     <li>
+      <%# button_to "Mark complete",  %>
       <%= content_tag(:span) { t.title }%>
       <%= link_to("view", task_path(t)) %>
       <%= link_to("edit", task_edit_path(t)) %>

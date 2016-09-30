@@ -7,21 +7,23 @@
       <%= f.text_field :title %>
     </li>
 
-
     <li>
       <%= f.label :description %>
       <%= f.text_field :description %>
     </li>
 
-
     <li>
-      <%= f.label :completion_status %>
+      <%= f.label :completion_status, "Status" %>
       <%= f.text_field :completion_status %>
     </li>
 
+    <li>
+      <%= f.label :is_complete, "Complete"  %>
+      <%= f.check_box :is_complete %>
+    </li>
 
     <li>
-      <%= f.label :completed_at %>
+      <%= f.label :completed_at, "Date/time completed" %>
       <%= f.text_field :completed_at %>
     </li>
     <%= f.submit %>

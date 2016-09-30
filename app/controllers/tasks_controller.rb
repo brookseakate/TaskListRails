@@ -6,6 +6,8 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+
+    @task_complete = @task.is_complete == true ? "Yes" : "No"
   end #show
 
   def new
@@ -45,7 +47,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :completed_at, :completion_status)
+    params.require(:task).permit(:title, :description, :is_complete, :completed_at, :completion_status)
   end #task_params
 
 end #TasksController
