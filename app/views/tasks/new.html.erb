@@ -1,7 +1,7 @@
 <main>
   <%= content_tag(:h1) { "Add a new task" } %>
+  <%= form_for @task do |f| %>
   <ul>
-    <%= form_for @task do |f| %>
     <li>
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -14,7 +14,11 @@
 
     <li>
       <%= f.label :completion_status, "Status" %>
-      <%= f.text_field :completion_status %>
+      <%= f.select(:completion_status) do %>
+        <% @task_status_options.each do |c| %>
+         <%= content_tag(:option, c, value: c)%>
+        <% end %>
+      <% end %>
     </li>
 
     <li>

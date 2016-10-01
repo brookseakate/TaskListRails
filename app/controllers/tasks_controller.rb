@@ -12,6 +12,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @task_status_options = Task.status_options
   end #new
 
   def create
