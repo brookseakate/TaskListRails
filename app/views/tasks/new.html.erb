@@ -14,11 +14,7 @@
 
     <li>
       <%= f.label :completion_status, "Status" %>
-      <%= f.select(:completion_status) do %>
-        <% @task_status_options.each do |c| %>
-         <%= content_tag(:option, c, value: c)%>
-        <% end %>
-      <% end %>
+      <%= f.select :completion_status, @task_status_options %>
     </li>
 
     <li>
