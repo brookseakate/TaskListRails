@@ -6,7 +6,6 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
-
     @task_complete = @task.is_complete == true ? "Yes" : "No"
   end #show
 
@@ -17,6 +16,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task_status_options = Task.status_options
 
     if @task.save
       redirect_to tasks_path
@@ -32,9 +32,10 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
+    @task_status_options = Task.status_options
 
     if @task.update(task_params)
-      redirect_to task_path(@task)
+      redirect_to tasks_path
     else
       render :edit
     end
@@ -42,14 +43,12 @@ class TasksController < ApplicationController
 
   def destroy
     Task.find(params[:id]).destroy
-
     redirect_to tasks_path
   end #destroy
 
   def complete
     @task = Task.find(params[:id])
     @task.update(is_complete: true, completed_at: DateTime.now)
-
     redirect_to task_path(@task)
   end #complete
 
