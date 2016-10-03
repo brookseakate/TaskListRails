@@ -18,7 +18,17 @@ class TasksController < ApplicationController
     @task_status_options = Task.status_options
 
     if @task.save
-      redirect_to tasks_path
+      if @task.is_complete? && @task.completed_at.blank?
+        # if task is marked complete without a completion time, update completion time to now & allow confirmation
+        @task.completed_at = DateTime.now
+        render :edit
+      elsif !@task.is_complete? && !@task.completed_at.blank?
+        # if task is marked incomplete, but there is a completion time entered, update completion time to blank & allow confirmation
+        @task.completed_at = nil
+        render :edit
+      else
+        redirect_to tasks_path
+      end
     else
       render :new
     end
@@ -34,7 +44,17 @@ class TasksController < ApplicationController
     @task_status_options = Task.status_options
 
     if @task.update(task_params)
-      redirect_to tasks_path
+      if @task.is_complete? && @task.completed_at.blank?
+        # if task is marked complete without a completion time, update completion time to now & allow confirmation
+        @task.completed_at = DateTime.now
+        render :edit
+      elsif !@task.is_complete? && !@task.completed_at.blank?
+        # if task is marked incomplete, but there is a completion time entered, update completion time to blank & allow confirmation
+        @task.completed_at = nil
+        render :edit
+      else
+        redirect_to tasks_path
+      end
     else
       render :edit
     end
