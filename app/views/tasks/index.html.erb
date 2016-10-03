@@ -5,6 +5,10 @@
   <ul>
     <% @incomplete_tasks.each do |t| %>
     <%= render partial: "index_list", locals: {t:t} %>
+    <%= button_to("Mark complete", task_complete_path(t), method: :patch) %>
+    </li>
+    <p>
+    </p>
     <% end %>
   </ul>
   <%= content_tag(:h3) { "Completed Tasks" } %>
