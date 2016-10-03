@@ -1,3 +1,4 @@
+<% Time.zone = "Pacific Time (US & Canada)" %>
 <ul>
   <li>
     <%= f.label :title %>
@@ -16,7 +17,7 @@
 
   <li>
     <%= f.label :completed_at, "Date/time completed" %>
-    <%= f.date_field :completed_at %>
+    <%= f.datetime_local_field :completed_at %>
   </li>
   <%= f.submit %>
 </ul>

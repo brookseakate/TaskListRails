@@ -1,3 +1,4 @@
+<% Time.zone = "Pacific Time (US & Canada)" %>
 <main>
   <article>
     <%= content_tag(:h1) { "To do: #{@task.title}" } %>
@@ -6,7 +7,8 @@
     </p>
     <%= content_tag(:p) { "Description: #{@task.description}" } %>
     <%= content_tag(:h5) { "Status: #{@task.completion_status}" } %>
-    <%= content_tag(:h5) { "Completion Date: #{@task.completed_at}" } %>
+
+    <%= !@task.completed_at.blank? ?  content_tag(:h5) { "Completion Date: " + @task.completed_at.strftime("%Y-%m-%y at %I:%M:%S  %P %Z") } : content_tag(:h5) { "Completion Date: n/a" } %>
   </article>
   <p>
     <%= link_to "Go home", tasks_path %>
