@@ -18,18 +18,9 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task_status_options = Task.status_options
 
-    if @task.save
-      if @task.is_complete? && @task.completed_at.blank?
-        # if task is marked complete without a completion time, update completion time to now & allow confirmation
-        @task.completed_at = DateTime.now
-        render :edit
-      elsif !@task.is_complete? && !@task.completed_at.blank?
-        # if task is marked incomplete, but there is a completion time entered, update completion time to blank & allow confirmation
-        @task.completed_at = nil
-        render :edit
-      else
-        redirect_to tasks_path
-      end
+    if @task.save && !@task.correct_completion_status_date
+      # The correct_completion_status_date method corrects completed_at date if either A) the completed_at field is blank while completion_status is "completed"/"accepted", or B) completed_at field is not blank while completion_status is < "completed"/"accepted". Returns true if date needed correction, returns false otherwise
+      redirect_to tasks_path
     else
       render :new
     end
@@ -44,18 +35,9 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task_status_options = Task.status_options
 
-    if @task.update(task_params)
-      if @task.is_complete? && @task.completed_at.blank?
-        # if task is marked complete without a completion time, update completion time to now & allow confirmation
-        @task.completed_at = DateTime.now
-        render :edit
-      elsif !@task.is_complete? && !@task.completed_at.blank?
-        # if task is marked incomplete, but there is a completion time entered, update completion time to blank & allow confirmation
-        @task.completed_at = nil
-        render :edit
-      else
-        redirect_to tasks_path
-      end
+    if @task.update(task_params) && !@task.correct_completion_status_date
+      # The correct_completion_status_date method corrects completed_at date if either A) the completed_at field is blank while completion_status is "completed"/"accepted", or B) completed_at field is not blank while completion_status is < "completed"/"accepted". Returns true if date needed correction, returns false otherwise
+      redirect_to tasks_path
     else
       render :edit
     end
