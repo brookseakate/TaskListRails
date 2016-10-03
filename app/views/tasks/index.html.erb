@@ -1,20 +1,16 @@
 <main>
-  <%= content_tag(:h1) { "Tasks To Do" } %>
+  <%= content_tag(:h1) { "Task List" } %>
+  <%= link_to("Add a new task", tasks_new_path) %>
+  <%= content_tag(:h3) { "Tasks To Do" } %>
   <ul>
-    <% @tasks.each do |t| %>
-    <li>
-      <%= content_tag(:span) { t.title }%>
-      <%= link_to("view", task_path(t)) %>
-      <%= link_to("edit", task_edit_path(t)) %>
-      <%= link_to("delete", task_path(t), method: :delete, data: { confirm: "Are you sure you want to delete this task?" }) %>
-      <% if !t.is_complete? %>
-        <%= button_to("Mark complete", task_complete_path(t), method: :patch) %>
-      <% else %>
-        <%= button_to("View completed task", task_path(t), method: :get) %>
-      <% end %>
-    </li>
-    <p></p>
+    <% @incomplete_tasks.each do |t| %>
+    <%= render partial: "index_list", locals: {t:t} %>
     <% end %>
   </ul>
-  <%= link_to("Add a new task", tasks_new_path) %>
+  <%= content_tag(:h3) { "Completed Tasks" } %>
+  <ul>
+    <% @complete_tasks.each do |t| %>
+    <%= render partial: "index_list", locals: {t:t} %>
+    <% end %>
+  </ul>
 </main>
