@@ -51,7 +51,7 @@ class TasksController < ApplicationController
   def complete
     @task = Task.find(params[:id])
     @task.update(completion_status: "completed", completed_at: DateTime.now)
-    redirect_to task_path(@task)
+    redirect_to tasks_path
   end #complete
 
   private
