@@ -6,7 +6,6 @@
     </p>
     <%= content_tag(:p) { "Description: #{@task.description}" } %>
     <%= content_tag(:h5) { "Status: #{@task.completion_status}" } %>
-    <%= content_tag(:h5) { "Is Complete? " +  @task_complete } %>
     <%= content_tag(:h5) { "Completion Date: #{@task.completed_at}" } %>
   </article>
   <p>
