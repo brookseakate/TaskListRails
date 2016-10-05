@@ -1,6 +1,6 @@
 <main>
   <%= content_tag(:h1) { "Task List" } %>
-  <%= link_to("Add a new task", tasks_new_path) %>
+  <%= link_to("Add a new task", new_task_path) %>
   <%= content_tag(:h3) { "Tasks To Do" } %>
   <ul>
     <% @incomplete_tasks.each do |t| %>

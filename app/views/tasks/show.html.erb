@@ -3,7 +3,7 @@
   <article>
     <%= content_tag(:h1) { "To do: #{@task.title}" } %>
     <p>
-      <%= link_to "Edit this task", task_edit_path(@task) %>
+      <%= link_to "Edit this task", edit_task_path(@task) %>
     </p>
     <%= content_tag(:p) { "Description: #{@task.description}" } %>
     <%= content_tag(:h5) { "Status: #{@task.completion_status}" } %>
