@@ -5,6 +5,13 @@ Rails.application.routes.draw do
 
   patch 'tasks/:id/complete' => 'tasks#complete', as: 'task_complete'
 
+  get 'auth/:provider/callback' => 'sessions#create'
+
+  get 'sessions' => 'session#index'
+  delete 'sessions' => 'sessions#delete'
+
+  get 'sessions/login_failure', to: 'sessions#login_failure', as: :login_failure
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
