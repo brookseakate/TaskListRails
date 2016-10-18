@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  validates: :email, :uid, :provider, presence: true
+  validates :email, :uid, :provider, presence: true
 
   def self.build_from_github(auth_hash)
     user = User.new
@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     user.provider = 'github'
     user.name = auth_hash['info']['name']
     user.email = auth_hash['info']['email']
+    user.nickname = auth_hash[:info][:nickname]
 
     return user
   end
