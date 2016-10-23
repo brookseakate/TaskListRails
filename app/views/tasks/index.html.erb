@@ -1,7 +1,10 @@
-  <header class = "row">
-    <%= content_tag(:h1) { "Task List" } %>
-    <%= link_to("Add a new task", new_task_path, class: "button") %>
+  <header class="row">
+    <h1 class="column small-10"> Task List </h1>
+    <%= link_to("Login", 'auth/github', class: "button secondary column small-2") %>
   </header>
+    <div class="row">
+      <%= link_to("Add a new task", new_task_path, class: "button column small-2 end") %>
+    </div>
   <main class="row small-up-2">
   <section class="incomplete-tasks column">
     <%= content_tag(:h3) { "Tasks To Do" } %>
