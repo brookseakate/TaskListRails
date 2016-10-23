@@ -5,6 +5,8 @@ class TasksController < ApplicationController
     if !session[:user_id].blank?
       # @user = User.find(session[:user_id])
       redirect_to :tasks and return
+    else
+      render :welcome
     end
   end
 
