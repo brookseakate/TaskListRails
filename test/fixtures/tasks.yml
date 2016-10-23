@@ -1,13 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyString
-  completed_at: 2016-09-28 15:34:10
-  completion_status: MyString
-
+  title: One title
+  description: One description
+  completed_at: 2016-09-01 15:34:10
+  completion_status: defined
 two:
-  title: MyString
-  description: MyString
-  completed_at: 2016-09-28 15:34:10
-  completion_status: MyString
+  title: Two title
+  description: Two description
+  completed_at: 2016-09-02 15:34:10
+  completion_status: deep freeze
+three:
+  title: Three title
+  description: Three description
+  completed_at: 2016-09-03 15:34:10
+  completion_status: on deck
+four:
+  title: Four title
+  description: Four description
+  completed_at: 2016-09-04 15:34:10
+  completion_status: in progress
+five:
+  title: Five title
+  description: Five description
+  completed_at: 2016-09-05 15:34:10
+  completion_status: blocked
+six:
+  title: Six title
+  description: Six description
+  completed_at: 2016-09-06 15:34:10
+  completion_status: completed
+seven:
+  title: Seven title
+  description: Seven description
+  completed_at: 2016-09-07 15:34:10
+  completion_status: accepted

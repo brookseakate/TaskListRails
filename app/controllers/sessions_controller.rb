@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       # Attempt to create a new user
 
       @user = User.build_from_github(auth_hash)
-      render :creation_failure unless @user.save
+      render :creation_failure and return unless @user.save
     end
 
       # Save the user ID in the session
