@@ -16,8 +16,8 @@ class TasksController < ApplicationController
   end #index
 
   def show
-    # @task = Task.find(params[:id])
     requested_task = Task.find(params[:id])
+
     if requested_task.user_id == current_user.id
       @task = current_user.tasks.find(params[:id])
     else
@@ -26,12 +26,12 @@ class TasksController < ApplicationController
   end #show
 
   def new
-    @task = Task.new
+    @task = current_user.tasks.new
     @task_status_options = Task.status_options
   end #new
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.new(task_params)
     @task_status_options = Task.status_options
 
     if @task.save && !@task.correct_completion_status_date
@@ -43,13 +43,27 @@ class TasksController < ApplicationController
   end #create
 
   def edit
-    @task = Task.find(params[:id])
     @task_status_options = Task.status_options
+
+    requested_task = Task.find(params[:id])
+
+    if requested_task.user_id == current_user.id
+      @task = current_user.tasks.find(params[:id])
+    else
+      redirect_to :unauth_req and return
+    end
   end #edit
 
   def update
-    @task = Task.find(params[:id])
     @task_status_options = Task.status_options
+
+    requested_task = Task.find(params[:id])
+
+    if requested_task.user_id == current_user.id
+      @task = current_user.tasks.find(params[:id])
+    else
+      redirect_to :unauth_req and return
+    end
 
     if @task.update(task_params) && !@task.correct_completion_status_date
       # The correct_completion_status_date method corrects completed_at date if either A) the completed_at field is blank while completion_status is "completed"/"accepted", or B) completed_at field is not blank while completion_status is < "completed"/"accepted". Returns true if date needed correction, returns false otherwise

@@ -1,5 +1,5 @@
   <header class="row">
-    <h1 class="column small-10"> Task List </h1>
+    <h1 class="column small-10"> <%= "#{@current_user.nickname.capitalize}'s" %> Task List </h1>
     <%= link_to "Logout", sessions_path, method: :delete, class: "button secondary column small-2" %>
   </header>
     <div class="row">
