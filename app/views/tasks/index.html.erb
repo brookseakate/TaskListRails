@@ -1,20 +1,31 @@
-<main>
-  <%= content_tag(:h1) { "Task List" } %>
-  <%= link_to("Add a new task", new_task_path) %>
-  <%= content_tag(:h3) { "Tasks To Do" } %>
-  <ul>
-    <% @incomplete_tasks.each do |t| %>
-    <%= render partial: "index_list", locals: {t:t} %>
-    <%= button_to("Mark complete", task_complete_path(t), method: :patch) %>
+  <header class = "row">
+    <%= content_tag(:h1) { "Task List" } %>
+    <%= link_to("Add a new task", new_task_path, class: "button") %>
+  </header>
+  <main class="row small-up-2">
+  <section class="incomplete-tasks column">
+    <%= content_tag(:h3) { "Tasks To Do" } %>
+    <ul>
+        <% @incomplete_tasks.each do |t| %>
+        <li>
+        <%= render partial: "index_list", locals: {t:t} %>
+        <%= button_to("Mark complete", task_complete_path(t), method: :patch, class: "button success") %>
+      </li>
+      <p>
+      </p>
+      <% end %>
+    </ul>
+  </section>
+  <section class="complete-tasks column">
+    <%= content_tag(:h3) { "Completed Tasks" } %>
+    <ul>
+        <% @complete_tasks.each do |t| %>
+        <li>
+        <%= render partial: "index_list", locals: {t:t} %>
+      </p>
+      <p>
     </li>
-    <p>
-    </p>
     <% end %>
-  </ul>
-  <%= content_tag(:h3) { "Completed Tasks" } %>
-  <ul>
-    <% @complete_tasks.each do |t| %>
-    <%= render partial: "index_list", locals: {t:t} %>
-    <% end %>
-  </ul>
+    </ul>
+  </section>
 </main>

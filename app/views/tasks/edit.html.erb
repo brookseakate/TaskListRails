@@ -1,9 +1,6 @@
-<main>
+<main class="row">
   <%= content_tag(:h1) { "Edit task" } %>
   <%= form_for @task, method: :patch do |f| %>
   <%= render partial: "form", locals: {f: f} %>
   <% end %>
-  <p>
-    <%= link_to "Go home", tasks_path %>
-  </p>
 </main>

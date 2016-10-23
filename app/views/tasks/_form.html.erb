@@ -19,5 +19,10 @@
     <%= f.label :completed_at, "Date/time completed" %>
     <%= f.datetime_local_field :completed_at %>
   </li>
-  <%= f.submit %>
+  <%= f.submit "Save", class: "button success" %>
+  <p>  </p>
+  <p>  </p>
+  <p>
+    <%= link_to "Go home", tasks_path, class: "secondary button tiny"%>
+  </p>
 </ul>
