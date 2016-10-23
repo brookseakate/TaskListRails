@@ -1,5 +1,12 @@
 class TasksController < ApplicationController
 
+  def welcome
+    if !session[:user_id].blank?
+      # @user = User.find(session[:user_id])
+      redirect_to :tasks and return
+    end
+  end
+
   def index
     @complete_tasks = Task.complete_tasks
     @incomplete_tasks = Task.incomplete_tasks
