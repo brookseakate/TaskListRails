@@ -3,7 +3,6 @@ class TasksController < ApplicationController
 
   def welcome
     if !session[:user_id].blank?
-      # @user = User.find(session[:user_id])
       redirect_to :tasks and return
     else
       render :welcome
@@ -11,12 +10,19 @@ class TasksController < ApplicationController
   end
 
   def index
-    @complete_tasks = Task.complete_tasks
-    @incomplete_tasks = Task.incomplete_tasks
+    @tasks = current_user.tasks
+    @complete_tasks = @tasks.complete_tasks
+    @incomplete_tasks = @tasks.incomplete_tasks
   end #index
 
   def show
-    @task = Task.find(params[:id])
+    # @task = Task.find(params[:id])
+    requested_task = Task.find(params[:id])
+    if requested_task.user_id == current_user.id
+      @task = current_user.tasks.find(params[:id])
+    else
+      redirect_to :unauth_req
+    end
   end #show
 
   def new
