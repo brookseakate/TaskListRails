@@ -1,2 +1,10 @@
+<main class="row">
+
+<% if flash[:logged_out] %>
+  <p>
+    <%= flash[:logged_out] %>
+  </p>
+<% end %>
 <h1>Welcome to Task List</h1>
 <%= link_to "Please log in", 'auth/github', class: "button" %>
+</main>

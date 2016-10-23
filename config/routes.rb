@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback' => 'sessions#create'
 
   get 'sessions' => 'sessions#index'
-  delete 'sessions' => 'sessions#delete'
+  delete 'sessions' => 'sessions#destroy'
 
   get 'sessions/login_failure', to: 'sessions#login_failure', as: :login_failure
 

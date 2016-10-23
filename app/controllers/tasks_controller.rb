@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  skip_before_action :require_login, only: [:welcome, :create]
 
   def welcome
     if !session[:user_id].blank?
